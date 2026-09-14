@@ -3142,11 +3142,6 @@
       if (window.lucide) window.lucide.createIcons();
     });
 
-    function toggleMobileNav() {
-      const menu = document.getElementById('mobileNavMenu');
-      if (menu) menu.classList.toggle('hidden');
-    }
-
     // Corporate Contact Form Handler & WhatsApp Direct Action
     document.addEventListener('DOMContentLoaded', () => {
       // WhatsApp button action
@@ -3274,9 +3269,31 @@
         window.lucide.createIcons();
       }
     });
+
+    // Auto-close menus on in-page anchor navigation click
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (href && href !== '#' && href !== '#!') {
+          if (typeof window.closeResidentialMegaMenu === 'function') {
+            window.closeResidentialMegaMenu();
+          }
+          if (typeof window.closeBusinessMegaMenu === 'function') {
+            window.closeBusinessMegaMenu();
+          }
+          if (typeof window.closeMobileNav === 'function') {
+            window.closeMobileNav();
+          } else {
+            var mobileMenu = document.getElementById('mobileNavMenu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden') && typeof window.toggleMobileNav === 'function') {
+              window.toggleMobileNav();
+            }
+          }
+        }
+      });
+    });
   </script>
-
-   
-
 </body>
 </html>
