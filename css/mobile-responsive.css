@@ -1,0 +1,712 @@
+/* ==========================================================================
+   EMBROSHYAL — MASTER MOBILE RESPONSIVE STYLESHEET
+   Flawless mobile navigation, header, drawer, and global responsiveness
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL VIEWPORT & OVERFLOW PROTECTION
+   -------------------------------------------------------------------------- */
+html {
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Responsive media containment */
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  /* Prevent single-line badge blowouts on mobile */
+  .inline-flex.rounded-full,
+  [class*="rounded-full"][class*="tracking-widest"] {
+    max-width: 100% !important;
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .inline-flex.rounded-full span,
+  [class*="rounded-full"] span {
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. TOP UTILITY ANNOUNCEMENT BAR (MOBILE)
+   -------------------------------------------------------------------------- */
+#topAnnouncementBar {
+  max-width: 100vw !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+#topAnnouncementBar > div {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+#topAnnouncementBar .flex-1 {
+  min-width: 0 !important;
+  width: 0 !important;
+  flex: 1 1 0% !important;
+  max-width: 100% !important;
+}
+
+#topAnnouncementBar .relative {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+#topAnnouncementBar input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 639px) {
+  #topAnnouncementBar {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  #topAnnouncementBar > div {
+    gap: 0.5rem !important;
+  }
+
+  #topAnnouncementBar input {
+    font-size: 11px !important;
+    height: 30px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    padding-left: 1.85rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #topAnnouncementBar i[data-lucide="search"] {
+    width: 12px !important;
+    height: 12px !important;
+    left: 0.55rem !important;
+  }
+
+  #topAnnouncementBar button {
+    padding: 3px 8px !important;
+    font-size: 10px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. MAIN STICKY NAVBAR (MOBILE & TABLET RESPONSIVE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  #mainStickyNavbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999 !important;
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: visible !important;
+  }
+
+  /* Force 2-sided flex layout ONLY on the top bar, NOT the dropdowns */
+  #mainStickyNavbar > div:first-child {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 62px !important;
+    min-height: 62px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    gap: 0.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Mobile Navbar Header Row: Logo on LEFT, Drawer Toggle on RIGHT */
+  #mainStickyNavbar > div:first-child > div:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 1rem !important;
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Logo positioned on the LEFT */
+  #mainStickyNavbar > div:first-child > div:first-child > a {
+    order: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-right: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Drawer / Hamburger Toggle Button positioned on the RIGHT */
+  #mainStickyNavbar > div:first-child > div:first-child > button[onclick*="toggleMobileNav"] {
+    order: 2 !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Center column (desktop links container) - hidden on mobile */
+  #mainStickyNavbar > div:first-child > div:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Right column: Mode switcher (RESIDENTIAL / COMMERCIAL) - HIDE ON MOBILE HEADER */
+  #mainStickyNavbar > div:first-child > div:last-child,
+  #mainStickyNavbar > div:first-child #btnToggleHome,
+  #mainStickyNavbar > div:first-child #btnToggleBusiness {
+    display: none !important;
+  }
+
+  /* Logo dimensions on mobile (< 1024px) */
+  #mainStickyNavbar img {
+    height: 48px !important;
+    max-height: 48px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  /* Hamburger Menu Toggle Button */
+  button[onclick*="toggleMobileNav"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 8px !important;
+    color: #1a1a1a !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    flex-shrink: 0 !important;
+  }
+
+  button[onclick*="toggleMobileNav"]:active,
+  button[onclick*="toggleMobileNav"]:hover {
+    background-color: rgba(194, 155, 56, 0.12) !important;
+    color: #C29B38 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. ULTRA-COMPACT MOBILE DEVICES (< 375px e.g. iPhone SE, 360px Android)
+   -------------------------------------------------------------------------- */
+@media (max-width: 374px) {
+  #mainStickyNavbar > div:first-child {
+    height: 56px !important;
+    min-height: 56px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    gap: 0.25rem !important;
+  }
+
+  #mainStickyNavbar img {
+    height: 42px !important;
+    max-height: 42px !important;
+  }
+
+  button[onclick*="toggleMobileNav"] {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. MOBILE NAVIGATION MENU DRAWER (#mobileNavMenu) - DETERMINISTIC DISPLAY
+   -------------------------------------------------------------------------- */
+#mobileNavMenu.hidden,
+#mobileNavDrawer.hidden,
+#mobileNavMenu[hidden],
+#mobileNavDrawer[hidden] {
+  display: none !important;
+}
+
+#mobileNavMenu:not(.hidden),
+#mobileNavDrawer:not(.hidden) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@media (min-width: 1024px) {
+  #mobileNavMenu,
+  #mobileNavDrawer {
+    display: none !important;
+  }
+}
+
+#mobileNavMenu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 120px !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  background-color: #ffffff !important;
+  border-bottom: 3px solid #C29B38 !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3) !important;
+  padding: 1rem 0.75rem 3rem 0.75rem !important;
+  z-index: 1000 !important;
+  box-sizing: border-box !important;
+  animation: mobileNavSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Drawer Mode Switcher Container */
+#mobileNavMenu > div:first-child {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 1.25rem !important;
+  padding: 3px !important;
+  border-radius: 9999px !important;
+  background: #EFEFEF !important;
+  border: 1px solid #d4d4d4 !important;
+  box-sizing: border-box !important;
+  gap: 3px !important;
+}
+
+#mobileNavMenu #mobileBtnToggleHome,
+#mobileNavMenu #mobileBtnToggleBusiness {
+  flex: 1 1 50% !important;
+  min-width: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 34px !important;
+  padding: 6px 2px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  text-align: center !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+/* Link groups inside Mobile Drawer */
+#mobileNavMenu #mobileDefaultHomeLinks,
+#mobileNavMenu #mobileForHomeLinks,
+#mobileNavMenu #mobileBusinessLinks {
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+#mobileNavMenu #mobileDefaultHomeLinks.hidden,
+#mobileNavMenu #mobileForHomeLinks.hidden,
+#mobileNavMenu #mobileBusinessLinks.hidden {
+  display: none !important;
+}
+
+#mobileNavMenu #mobileDefaultHomeLinks:not(.hidden),
+#mobileNavMenu #mobileForHomeLinks:not(.hidden),
+#mobileNavMenu #mobileBusinessLinks:not(.hidden) {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@keyframes mobileNavSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Translucent Luxury Backdrop when Mobile Nav is Open */
+body.mobile-nav-open::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 998;
+  pointer-events: auto;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: fadeInBackdrop 0.2s ease forwards;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Touch-friendly menu link targets */
+#mobileNavMenu a {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 42px !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.04em !important;
+  touch-action: manipulation !important;
+  transition: color 0.15s ease, transform 0.15s ease !important;
+}
+
+#mobileNavMenu a:active {
+  color: #C29B38 !important;
+  transform: translateX(4px) !important;
+}
+
+/* Drawer Mode Switcher Buttons */
+#mobileBtnToggleHome,
+#mobileBtnToggleBusiness {
+  min-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  touch-action: manipulation !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. SAFARI / CHROME MOBILE FORM INPUT ZOOM FIX
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. MOBILE BOTTOM NAV & FLOATING ACTION BUTTON CLEARANCE
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  body.has-bottom-nav,
+  body:has(nav.fixed.bottom-0) {
+    padding-bottom: 64px !important;
+  }
+
+  /* Keep WhatsApp and concierge button cleanly above the bottom bar */
+  aside[aria-label="Quick Concierge Support"],
+  .fixed.bottom-6.right-4,
+  .fixed.bottom-8.right-4 {
+    bottom: 74px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. MODAL & DRAWER RESPONSIVENESS ON MOBILE
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .modal-dialog,
+  [role="dialog"] > div {
+    max-width: 94vw !important;
+    width: 94vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. GLOBAL MOBILE TYPOGRAPHY: BALANCED HEADINGS & PARAGRAPHS
+   Automatically applies to all 44 pages for balanced, readable mobile typography
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Prevent horizontal blowouts on text containers */
+  main, section, article {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* --- H1: Hero & Main Page Titles --- */
+  h1:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: clamp(1.6rem, 6.2vw, 1.95rem) !important; /* ~25.5px - 31px */
+    line-height: 1.22 !important;
+    letter-spacing: 0.01em !important;
+    margin-bottom: 0.85rem !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Subtitles & italic accents inside H1 */
+  h1:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) span {
+    font-size: clamp(1.12rem, 4.4vw, 1.35rem) !important; /* ~18px - 21.6px */
+    line-height: 1.28 !important;
+    display: inline-block !important;
+    margin-top: 0.35rem !important;
+  }
+
+  /* --- H2: Major Section Headings & Sub-banners --- */
+  h2:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: clamp(1.35rem, 5.2vw, 1.6rem) !important; /* ~21.5px - 25.5px */
+    line-height: 1.28 !important;
+    margin-bottom: 0.75rem !important;
+    word-break: break-word !important;
+  }
+
+  /* --- H3: Subsection, Feature & Gallery Headings --- */
+  h3:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: clamp(1.2rem, 4.4vw, 1.35rem) !important; /* ~19px - 21.5px */
+    line-height: 1.32 !important;
+    margin-bottom: 0.65rem !important;
+    word-break: break-word !important;
+  }
+
+  /* --- H4: Card Titles & Small Headings --- */
+  h4:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *):not([class*="text-[10px]"]):not([class*="text-[11px]"]):not([class*="text-xs"]) {
+    font-size: clamp(1.05rem, 3.8vw, 1.18rem) !important; /* ~16.8px - 19px */
+    line-height: 1.38 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* --- Paragraphs (p) --- */
+  /* Main content & narrative body paragraphs */
+  p:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *):not(button *):not([class*="text-[9px]"]):not([class*="text-[10px]"]):not([class*="text-[11px]"]):not([class*="text-xs"]):not([class*="metric"]):not(.footer-bottom *):not(.footer-links *) {
+    font-size: clamp(13.5px, 3.7vw, 14.5px) !important;
+    line-height: 1.68 !important;
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Center-aligned elements preserve clean centering */
+  .text-center p:not(header *):not(nav *),
+  p.text-center:not(header *):not(nav *) {
+    text-align: center !important;
+    text-align-last: center !important;
+  }
+
+  /* Small captions, sub-notes and metadata */
+  p.text-xs:not(header *):not(nav *),
+  p.text-sm:not(header *):not(nav *):not(.footer-bottom *) {
+    font-size: clamp(12px, 3.2vw, 13px) !important;
+    line-height: 1.58 !important;
+  }
+
+  /* Editorial quotes & lead callouts */
+  .editorial-quote,
+  blockquote {
+    font-size: clamp(14px, 3.9vw, 15.5px) !important;
+    line-height: 1.62 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.85rem !important;
+    margin-bottom: 0.85rem !important;
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+  }
+
+  /* Stat numbers & Metric counters (e.g. 30+ Years, 15,000+) */
+  .font-serif.text-3xl:not(header *):not(nav *),
+  .font-serif.text-4xl:not(header *):not(nav *) {
+    font-size: clamp(1.5rem, 5vw, 1.85rem) !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Extra fine tuning for very small mobile screens (< 380px e.g. iPhone SE, Fold) */
+@media (max-width: 379px) {
+  h1:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: 1.48rem !important; /* ~23.6px */
+    line-height: 1.2 !important;
+  }
+
+  h1:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) span {
+    font-size: 1.05rem !important; /* ~16.8px */
+  }
+
+  h2:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: 1.25rem !important; /* ~20px */
+    line-height: 1.25 !important;
+  }
+
+  h3:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *) {
+    font-size: 1.1rem !important; /* ~17.6px */
+    line-height: 1.3 !important;
+  }
+
+  p:not(header *):not(nav *):not(#topAnnouncementBar *):not(#mobileNavMenu *):not(button *):not([class*="text-[9px]"]):not([class*="text-[10px]"]):not([class*="text-[11px]"]):not([class*="text-xs"]):not([class*="metric"]):not(.footer-bottom *):not(.footer-links *) {
+    font-size: 13px !important;
+    line-height: 1.62 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. MOBILE FIXED FOOTER ACTION BAR (CALL NOW & WHATSAPP DUAL BUTTONS)
+   -------------------------------------------------------------------------- */
+.mobile-fixed-action-bar {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  /* Hide the old 5-icon bottom nav on mobile */
+  nav.fixed.bottom-0,
+  nav.md\:hidden.fixed.bottom-0 {
+    display: none !important;
+  }
+
+  /* Hide the old circular floating concierge on mobile to prevent clutter */
+  aside[aria-label="Quick Concierge Support"],
+  .fixed.bottom-\[74px\].right-4 {
+    display: none !important;
+  }
+
+  /* Clearance for fixed bar */
+  body {
+    padding-bottom: 72px !important;
+  }
+
+  .site-footer {
+    padding-bottom: 6rem !important;
+  }
+
+  /* Fixed Bottom Action Bar */
+  .mobile-fixed-action-bar {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px !important;
+    z-index: 9999 !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-action-bar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .mobile-action-btn {
+    flex: 1 1 50% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+    text-decoration: none !important;
+    touch-action: manipulation !important;
+    transition: transform 0.15s ease, filter 0.15s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-action-btn:active {
+    transform: scale(0.97) !important;
+    filter: brightness(0.92) !important;
+  }
+
+  /* Call Now - Vibrant Blue Button */
+  .mobile-action-btn.btn-call {
+    background: #2563EB !important;
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%) !important;
+  }
+
+  /* WhatsApp - Vibrant Green Button */
+  .mobile-action-btn.btn-whatsapp {
+    background: #25D366 !important;
+    background: linear-gradient(135deg, #2ED87B 0%, #15A051 100%) !important;
+  }
+
+  .mobile-action-btn span {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-action-btn .action-icon {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+    color: #ffffff !important;
+  }
+
+  .mobile-action-btn.btn-call .action-icon {
+    fill: currentColor !important;
+    stroke: none !important;
+  }
+
+  .mobile-action-btn.btn-whatsapp .action-icon {
+    fill: #ffffff !important;
+  }
+}
+
+
